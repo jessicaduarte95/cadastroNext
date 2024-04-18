@@ -4,6 +4,7 @@ import { Modal } from '../../components/Modal/Modal';
 import { Title, SubTitle } from '../../components/Text/Text';
 import * as S from './style/ModalInserirStyle';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { z, ZodError } from 'zod';
 import { Select } from '../../components/Select/Select';
 import { Input } from '../../components/Input/Input';
@@ -41,8 +42,8 @@ export const ModalInserir = (props: ModalInserirProps) => {
 		formState: { errors }
 	} = useForm<FormProps>({
 		mode: 'all',
-		reValidateMode: 'onChange'
-		// resolver: zodResolver(schema)
+		reValidateMode: 'onChange',
+		resolver: zodResolver(schema)
 	});
 
 	const handleForm = (data: FormProps) => {
