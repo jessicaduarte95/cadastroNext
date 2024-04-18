@@ -37,9 +37,19 @@ export const Options = styled.option`
 	font-size: 14px;
 `;
 
+export const ContainerLabel = styled.div`
+	display: flex;
+	flex-direction: row;
+`;
+
 export const Label = styled.label<{ disabled: boolean }>`
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
 	color: ${({ disabled }) => (disabled ? TextColors.TextSelectDisabled : TextColors.TextSelect)};
+`;
+
+export const RequiredField = styled.span`
+	color: red;
+	margin-left: 2px;
 `;
