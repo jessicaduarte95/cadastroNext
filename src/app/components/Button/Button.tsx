@@ -25,24 +25,15 @@ type CancelButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const CancelButton = (props: CancelButtonProps) => {
 	const { children } = props;
 
-	return (
-		<S.CancelButton>
-			{children}
-		</S.CancelButton>
-	);
+	return <S.CancelButton>{children}</S.CancelButton>;
 };
-
 
 type NextButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: string;
 };
 
-export const NextButton = (props: NextButtonProps) => {
-	const { children } = props;
+export const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>((props, ref) => {
+	const { children, ...rest } = props;
 
-	return (
-		<S.NextButton>
-			{children}
-		</S.NextButton>
-	);
-};
+	return <S.NextButton {...rest}>{children}</S.NextButton>;
+});

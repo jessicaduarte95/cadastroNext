@@ -9,7 +9,6 @@ type ModalProps = {
 export const Modal = (props: ModalProps) => {
 	const { children, isOpen, width } = props;
 
-	console.log(typeof width)
 	return (
 		<>
 			{isOpen && (

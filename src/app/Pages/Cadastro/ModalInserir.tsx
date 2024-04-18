@@ -47,11 +47,14 @@ export const ModalInserir = (props: ModalInserirProps) => {
 	});
 
 	const handleForm = (data: FormProps) => {
-		console.log(data);
+		console.log("handleForm");
+		
+		const result = schema.parse(data);
+		console.log(result);
 	};
 
 	return (
-		<Modal isOpen={isOpen} width={'696px'}>
+		<Modal isOpen={isOpen} width={'880px'}>
 			<S.ContainerTitle>
 				<Title>Ativar o Bank</Title>
 				<p>x</p>
@@ -100,7 +103,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 				</S.Container>
 				<S.ContainerButtons>
 					<CancelButton>Cancelar</CancelButton>
-					<NextButton>Próximo</NextButton>
+					<NextButton type="submit">Concluir</NextButton>
 				</S.ContainerButtons>
 			</form>
 		</Modal>
