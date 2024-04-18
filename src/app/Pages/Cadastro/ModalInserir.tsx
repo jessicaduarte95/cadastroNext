@@ -18,7 +18,16 @@ const schema = z.object({
 	banco: z.string(),
 	tipoConta: z.string(),
 	tipoPessoa: z.string(),
-	estado: z.string()
+	estado: z.string(),
+	agencia: z.string(),
+	conta: z.string(),
+	cpf: z.string(),
+	telefone: z.string(),
+	nome: z.string(),
+	cep: z.string(),
+	cidade: z.string(),
+	endereco: z.string(),
+	numEndereco: z.string()
 });
 
 export const ModalInserir = (props: ModalInserirProps) => {
@@ -69,23 +78,23 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false} required={true}></Select>
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input label={'Agência:'} placeholder="Digite aqui" disabled={false} required={true}/>
-						<Input label={'Conta com dígito:'} placeholder="Digite aqui" disabled={false} required={true}/>
+						<Input {...register('agencia')} label={'Agência:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('conta')} label={'Conta com dígito:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 					<S.ContainerFields>
 						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false} required={true}></Select>
-						<Input label={'CPF:'} placeholder="Digite aqui" disabled={false} required={true}/>
-						<Input label={'Telefone:'} placeholder="Digite aqui" disabled={false} required={true}/>
+						<Input {...register('cpf')} label={'CPF:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('telefone')} label={'Telefone:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
-					<Input label={'Nome completo:'} placeholder="Digite aqui" disabled={false} required={true}/>
+					<Input {...register('nome')} label={'Nome completo:'} placeholder="Digite aqui" disabled={false} required={true} />
 					<S.ContainerFields>
-						<Input label={'CEP:'} placeholder="Digite aqui" disabled={false} required={true}/>
+						<Input {...register('cep')} label={'CEP:'} placeholder="Digite aqui" disabled={false} required={true} />
 						<Select {...register('estado')} label={'Estado:'} disabled={false} required={true}></Select>
-						<Input label={'Cidade:'} placeholder="Digite aqui" disabled={false} required={true}/>
+						<Input {...register('cidade')} label={'Cidade:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input label={'Endereço:'} placeholder="Digite aqui" disabled={false} required={true}/>
-						<Input label={'Número:'} placeholder="Digite aqui" disabled={false} required={true}/>
+						<Input {...register('endereco')} label={'Endereço:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('numEndereco')} label={'Número:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 				</S.Container>
 				<S.ContainerButtons>
