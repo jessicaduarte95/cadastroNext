@@ -17,3 +17,32 @@ export const ButtonAdicionar = (props: ButtonProps) => {
 		</S.ButtonAdicionar>
 	);
 };
+
+type CancelButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+	children: string;
+};
+
+export const CancelButton = (props: CancelButtonProps) => {
+	const { children } = props;
+
+	return (
+		<S.CancelButton>
+			{children}
+		</S.CancelButton>
+	);
+};
+
+
+type NextButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+	children: string;
+};
+
+export const NextButton = (props: NextButtonProps) => {
+	const { children } = props;
+
+	return (
+		<S.NextButton>
+			{children}
+		</S.NextButton>
+	);
+};

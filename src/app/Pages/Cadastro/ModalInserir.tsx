@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { z, ZodError } from 'zod';
 import { Select } from '../../components/Select/Select';
 import { Input } from '../../components/Input/Input';
+import { CancelButton, NextButton } from '../../components/Button/Button';
 
 type ModalInserirProps = {
 	isOpen: boolean;
@@ -87,6 +88,10 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						<Input label={'Número:'} placeholder="Digite aqui" disabled={false} />
 					</S.ContainerFields>
 				</S.Container>
+				<S.ContainerButtons>
+					<CancelButton>Cancelar</CancelButton>
+					<NextButton>Próximo</NextButton>
+				</S.ContainerButtons>
 			</form>
 		</Modal>
 	);
