@@ -16,10 +16,14 @@ export const Label = styled.label<{ disabled: boolean }>`
 `;
 
 export const Input = styled.input`
-	padding: 4px 16px;
+	padding: 4px 14px;
 	border-radius: 2px;
 	outline: none;
 	border: 1px solid ${SelectColors.SelectPrimaryRest};
+	color: red;
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: 400;
 
 	&:hover {
 		border: 1px solid ${SelectColors.SelectPrimaryHover};

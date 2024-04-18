@@ -20,4 +20,7 @@ export const Modal = styled.div<{width: string}>`
     background-color: ${ButtonColors.ButtonSecondaryRest};
     border-radius: 4px;
 	width: ${props => props.width};
+	max-height: 90vh;
+	overflow-y: auto;
+	scrollbar-width: thin;
 `

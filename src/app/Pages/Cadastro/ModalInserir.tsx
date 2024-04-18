@@ -15,7 +15,9 @@ type ModalInserirProps = {
 const schema = z.object({
 	profissional: z.string(),
 	banco: z.string(),
-	tipoConta: z.string()
+	tipoConta: z.string(),
+	tipoPessoa: z.string(),
+	estado: z.string()
 });
 
 export const ModalInserir = (props: ModalInserirProps) => {
@@ -66,8 +68,23 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false}></Select>
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input label={'Agência:'} disabled={false} />
-						<Input label={'Conta com dígito:'} disabled={false} />
+						<Input label={'Agência:'} placeholder="Digite aqui" disabled={false} />
+						<Input label={'Conta com dígito:'} placeholder="Digite aqui" disabled={false} />
+					</S.ContainerFields>
+					<S.ContainerFields>
+						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false}></Select>
+						<Input label={'CPF:'} placeholder="Digite aqui" disabled={false} />
+						<Input label={'Telefone:'} placeholder="Digite aqui" disabled={false} />
+					</S.ContainerFields>
+					<Input label={'Nome completo:'} placeholder="Digite aqui" disabled={false} />
+					<S.ContainerFields>
+						<Input label={'CEP:'} placeholder="Digite aqui" disabled={false} />
+						<Select {...register('estado')} label={'Estado:'} disabled={false}></Select>
+						<Input label={'Cidade:'} placeholder="Digite aqui" disabled={false} />
+					</S.ContainerFields>
+					<S.ContainerFields>
+						<Input label={'Endereço:'} placeholder="Digite aqui" disabled={false} />
+						<Input label={'Número:'} placeholder="Digite aqui" disabled={false} />
 					</S.ContainerFields>
 				</S.Container>
 			</form>
