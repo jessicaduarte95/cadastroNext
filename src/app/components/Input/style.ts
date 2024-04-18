@@ -31,4 +31,8 @@ export const Input = styled.input`
 	&:focus {
 		border: 1px solid ${SelectColors.SelectPrimarySelected};
 	}
+
+	&::placeholder {
+		color: ${TextColors.TextSelectDisabled};
+	}
 `;
