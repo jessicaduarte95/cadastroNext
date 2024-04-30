@@ -34,6 +34,9 @@ export const Lista = styled.li`
 export const ContainerFields = styled.div`
 	display: flex;
 	gap: 10px;
+	@media (max-width: 600px) {
+		flex-direction: column;
+	}
 `;
 
 export const ContainerButtons = styled.div`

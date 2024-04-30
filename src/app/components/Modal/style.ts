@@ -23,4 +23,10 @@ export const Modal = styled.div<{width: string}>`
 	max-height: 90vh;
 	overflow-y: auto;
 	scrollbar-width: thin;
+	@media (max-width: 930px) {
+		width: 700px
+	}
+	@media (max-width: 730px) {
+		width: 90%;
+	}
 `
