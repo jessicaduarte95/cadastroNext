@@ -8,7 +8,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	const { label, disabled, required, ...rest } = props;
+	const { label = '', disabled, required, name = '', type,  ...rest } = props;
 
 	return (
 		<S.Container>
@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 				<S.Label disabled={disabled}>{label}</S.Label>
 				{required && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
-			<S.Input {...rest}></S.Input>
+			<S.Input type={type} name={name} {...rest} ref={ref}></S.Input>
 		</S.Container>
 	);
 });

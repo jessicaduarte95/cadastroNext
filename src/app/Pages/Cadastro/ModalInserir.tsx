@@ -12,6 +12,7 @@ import { CancelButton, NextButton } from '../../components/Button/Button';
 
 type ModalInserirProps = {
 	isOpen: boolean;
+	handleCloseModal: () => void;
 };
 
 const schema = z.object({
@@ -32,13 +33,14 @@ const schema = z.object({
 });
 
 export const ModalInserir = (props: ModalInserirProps) => {
-	const { isOpen } = props;
+	const { isOpen, handleCloseModal } = props;
 
 	type FormProps = z.infer<typeof schema>;
 
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors }
 	} = useForm<FormProps>({
 		mode: 'all',
@@ -47,10 +49,13 @@ export const ModalInserir = (props: ModalInserirProps) => {
 	});
 
 	const handleForm = (data: FormProps) => {
-		console.log("handleForm");
-		
-		const result = schema.parse(data);
-		console.log(result);
+		try {
+			const result = schema.parse(data);
+			console.log(result);
+			reset();
+		} catch (error) {
+			console.log('Erro: ', error);
+		}
 	};
 
 	return (
@@ -76,33 +81,33 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							<S.Alert>Se possível preencha com calma para não ocorrer erros.</S.Alert>
 						</S.Lista>
 					</S.ContainerAlert>
-					<Select {...register('profissional')} label={'Profissional:'} disabled={true} required={true}></Select>
+					<Select {...register('profissional')} label={'Profissional:'} disabled={false} required={true}></Select>
 					<S.ContainerFields>
 						<Select {...register('banco')} label={'Banco:'} disabled={false} required={true}></Select>
 						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false} required={true}></Select>
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input {...register('agencia')} label={'Agência:'} placeholder="Digite aqui" disabled={false} required={true} />
-						<Input {...register('conta')} label={'Conta com dígito:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('agencia')} type="text" label={'Agência:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('conta')} type="text" label={'Conta com dígito:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 					<S.ContainerFields>
 						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false} required={true}></Select>
-						<Input {...register('cpf')} label={'CPF:'} placeholder="Digite aqui" disabled={false} required={true} />
-						<Input {...register('telefone')} label={'Telefone:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('cpf')} type="text" label={'CPF:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('telefone')} type="text" label={'Telefone:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
-					<Input {...register('nome')} label={'Nome completo:'} placeholder="Digite aqui" disabled={false} required={true} />
+					<Input {...register('nome')} type="text" label={'Nome completo:'} placeholder="Digite aqui" disabled={false} required={true} />
 					<S.ContainerFields>
-						<Input {...register('cep')} label={'CEP:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('cep')} type="text" label={'CEP:'} placeholder="Digite aqui" disabled={false} required={true} />
 						<Select {...register('estado')} label={'Estado:'} disabled={false} required={true}></Select>
-						<Input {...register('cidade')} label={'Cidade:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('cidade')} type="text" label={'Cidade:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input {...register('endereco')} label={'Endereço:'} placeholder="Digite aqui" disabled={false} required={true} />
-						<Input {...register('numEndereco')} label={'Número:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('endereco')} type="text" label={'Endereço:'} placeholder="Digite aqui" disabled={false} required={true} />
+						<Input {...register('numEndereco')} type="text" label={'Número:'} placeholder="Digite aqui" disabled={false} required={true} />
 					</S.ContainerFields>
 				</S.Container>
 				<S.ContainerButtons>
-					<CancelButton>Cancelar</CancelButton>
+					<CancelButton onClick={handleCloseModal}>Cancelar</CancelButton>
 					<NextButton type="submit">Concluir</NextButton>
 				</S.ContainerButtons>
 			</form>

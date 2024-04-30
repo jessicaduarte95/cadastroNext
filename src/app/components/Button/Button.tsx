@@ -18,22 +18,27 @@ export const ButtonAdicionar = (props: ButtonProps) => {
 	);
 };
 
+
+
 type CancelButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: string;
+	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const CancelButton = (props: CancelButtonProps) => {
-	const { children } = props;
+	const { children, onClick } = props;
 
-	return <S.CancelButton>{children}</S.CancelButton>;
+	return <S.CancelButton onClick={onClick}>{children}</S.CancelButton>;
 };
+
+
 
 type NextButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: string;
 };
 
 export const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>((props, ref) => {
-	const { children, ...rest } = props;
+	const { type, children, ...rest } = props;
 
-	return <S.NextButton {...rest}>{children}</S.NextButton>;
+	return <S.NextButton type={type} {...rest}>{children}</S.NextButton>;
 });
