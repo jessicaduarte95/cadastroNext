@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Select } from '../../components/Select/Select';
 import { Input } from '../../components/Input/Input';
-import { CancelButton, NextButton } from '../../components/Button/Button';
+import { CancelButton, NextButton, CloseButton } from '../../components/Button/Button';
 import { options } from '../../../../data';
 
 type ModalInserirProps = {
@@ -101,8 +101,10 @@ export const ModalInserir = (props: ModalInserirProps) => {
 		try {
 			const result = schema.parse(data);
 			console.log(result);
+			handleCloseModal();
 			reset();
 		} catch (error) {
+			handleCloseModal();
 			console.log('Erro: ', error);
 		}
 	};
@@ -111,7 +113,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 		<Modal isOpen={isOpen} width={'880px'}>
 			<S.ContainerTitle>
 				<Title>Ativar o Bank</Title>
-				<p>x</p>
+				<CloseButton onClick={handleCloseModal} />
 			</S.ContainerTitle>
 			<form onSubmit={handleSubmit(handleForm)}>
 				<S.Container>
