@@ -17,11 +17,41 @@ type ModalInserirProps = {
 };
 
 const schema = z.object({
-	profissional: z.string(),
-	banco: z.string(),
-	tipoConta: z.string(),
-	tipoPessoa: z.string(),
-	estado: z.string(),
+	profissional: z.number({
+		errorMap: () => {
+			return {
+				message: 'Invalid'
+			};
+		}
+	}),
+	banco: z.number({
+		errorMap: () => {
+			return {
+				message: 'Invalid'
+			};
+		}
+	}),
+	tipoConta: z.number({
+		errorMap: () => {
+			return {
+				message: 'Invalid'
+			};
+		}
+	}),
+	tipoPessoa: z.number({
+		errorMap: () => {
+			return {
+				message: 'Invalid'
+			};
+		}
+	}),
+	estado: z.number({
+		errorMap: () => {
+			return {
+				message: 'Invalid'
+			};
+		}
+	}),
 	agencia: z.number({
 		errorMap: () => {
 			return {
@@ -100,10 +130,37 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							<S.Alert>Se possível preencha com calma para não ocorrer erros.</S.Alert>
 						</S.Lista>
 					</S.ContainerAlert>
-					<Select {...register('profissional')} label={'Profissional:'} disabled={false} requiredField={true} options={options.profissional}></Select>
+					<Select
+						{...register('profissional', {
+							setValueAs: v => parseInt(v)
+						})}
+						label={'Profissional:'}
+						disabled={false}
+						requiredField={true}
+						options={options.profissional}
+						hasError={errors.profissional?.message}
+					/>
 					<S.ContainerFields>
-						<Select {...register('banco')} label={'Banco:'} disabled={false} requiredField={true} options={options.banco}></Select>
-						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false} requiredField={true} options={options.tipoConta}></Select>
+						<Select
+							{...register('banco', {
+								setValueAs: v => parseInt(v)
+							})}
+							label={'Banco:'}
+							disabled={false}
+							requiredField={true}
+							options={options.banco}
+							hasError={errors.banco?.message}
+						/>
+						<Select
+							{...register('tipoConta', {
+								setValueAs: v => parseInt(v)
+							})}
+							label={'Tipo de conta:'}
+							disabled={false}
+							requiredField={true}
+							options={options.tipoConta}
+							hasError={errors.tipoConta?.message}
+						/>
 					</S.ContainerFields>
 					<S.ContainerFields>
 						<Input
@@ -130,14 +187,32 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						/>
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false} requiredField={true} options={options.tipoPessoa}></Select>
+						<Select
+							{...register('tipoPessoa', {
+								setValueAs: v => parseInt(v)
+							})}
+							label={'Tipo de pessoa:'}
+							disabled={false}
+							requiredField={true}
+							options={options.tipoPessoa}
+							hasError={errors.tipoPessoa?.message}
+						/>
 						<Input {...register('cpf')} type="text" label={'CPF:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cpf?.message} />
 						<Input {...register('telefone')} type="text" label={'Telefone:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.telefone?.message} />
 					</S.ContainerFields>
 					<Input {...register('nome')} type="text" label={'Nome completo:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.nome?.message} />
 					<S.ContainerFields>
 						<Input {...register('cep')} type="text" label={'CEP:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cep?.message} />
-						<Select {...register('estado')} label={'Estado:'} disabled={false} requiredField={true} options={options.estado}></Select>
+						<Select
+							{...register('estado', {
+								setValueAs: v => parseInt(v)
+							})}
+							label={'Estado:'}
+							disabled={false}
+							requiredField={true}
+							options={options.estado}
+							hasError={errors.estado?.message}
+						/>
 						<Input {...register('cidade')} type="text" label={'Cidade:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cidade?.message} />
 					</S.ContainerFields>
 					<S.ContainerFields>

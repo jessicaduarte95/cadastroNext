@@ -8,13 +8,14 @@ type Option = {
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
-	disabled: boolean;
+	disabled?: boolean;
 	requiredField: boolean;
 	options: Option[];
+	hasError?: string;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
-	const { label = '', disabled = false, requiredField = false, name = '', options, ...rest } = props;
+	const { label = '', disabled = false, requiredField = false, name = '', options, hasError, ...rest } = props;
 
 	return (
 		<S.Container>
@@ -22,7 +23,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 				<S.Label disabled={disabled}>{label}</S.Label>
 				{requiredField && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
-			<S.Select name={name} disabled={disabled} {...rest} ref={ref}>
+			<S.Select name={name} disabled={disabled} hasError={hasError} {...rest} ref={ref}>
 				<S.Options value="">Selecione</S.Options>
 				{options.map((option: Option, index: any) => {
 					return (
