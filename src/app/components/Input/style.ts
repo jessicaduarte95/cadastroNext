@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { TextColors, SelectColors } from '../../style/theme';
 
+interface Props {
+	disabledField: boolean;
+	hasError: string | undefined;
+}
+
 export const Container = styled.div`
 	width: 100%;
 	display: flex;
@@ -13,11 +18,11 @@ export const ContainerLabel = styled.div`
 	flex-direction: row;
 `;
 
-export const Label = styled.label<{ disabled: boolean }>`
+export const Label = styled.label<Props>`
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
-	color: ${({ disabled }) => (disabled ? TextColors.TextSelectDisabled : TextColors.TextSelect)};
+	color: ${(props: Props) => (props.disabledField ? TextColors.TextSelectDisabled : TextColors.TextSelect)};
 `;
 
 export const RequiredField = styled.span`
@@ -25,24 +30,35 @@ export const RequiredField = styled.span`
 	margin-left: 2px;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<Props>`
 	padding: 4px 14px;
 	border-radius: 2px;
 	outline: none;
-	border: 1px solid ${SelectColors.SelectPrimaryRest};
 	font-size: 16px;
 	line-height: 16px;
 	font-weight: 400;
 
-	&:hover {
-		border: 1px solid ${SelectColors.SelectPrimaryHover};
-	}
-
-	&:focus {
-		border: 1px solid ${SelectColors.SelectPrimarySelected};
-	}
-
 	&::placeholder {
 		color: ${TextColors.TextSelectDisabled};
 	}
+
+	${(props: Props) =>
+		props.hasError
+			? `border: 1px solid ${TextColors.Error};
+		&:hover {
+			border: 1px solid ${TextColors.Error};
+		}
+	
+		&:focus {
+			border: 1px solid ${TextColors.Error};
+		}`
+			: `border: 1px solid ${SelectColors.SelectPrimaryRest};
+		&:hover {
+			border: 1px solid ${SelectColors.SelectPrimaryHover};
+		}
+	
+		&:focus {
+			border: 1px solid ${SelectColors.SelectPrimarySelected};
+		}
+		`};
 `;

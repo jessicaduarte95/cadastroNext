@@ -4,19 +4,20 @@ import * as S from './style';
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	disabled: boolean;
-	required: boolean;
+	requiredField: boolean;
+	hasError?: string;
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	const { label = '', disabled, required, name = '', type,  ...rest } = props;
+	const { label = '', disabled, requiredField, name = '', type, hasError, ...rest } = props;
 
 	return (
 		<S.Container>
 			<S.ContainerLabel>
-				<S.Label disabled={disabled}>{label}</S.Label>
-				{required && <S.RequiredField>*</S.RequiredField>}
+				<S.Label disabledField={disabled}>{label}</S.Label>
+				{requiredField && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
-			<S.Input type={type} name={name} {...rest} ref={ref}></S.Input>
+			<S.Input hasError={hasError} type={type} name={name} {...rest} ref={ref}></S.Input>
 		</S.Container>
 	);
 });

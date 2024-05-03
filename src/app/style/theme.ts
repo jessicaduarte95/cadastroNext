@@ -8,7 +8,7 @@ export const ButtonColors = {
   ButtonCancel: '#CCD1D3',
   ButtonCancelHover: '#3D3D3D',
   ButtonNext: '#2797BA',
-  ButtonNextHover: '#207C97'
+  ButtonNextHover: '#207C97',
 };
 
 
@@ -18,7 +18,8 @@ export const TextColors = {
   TextSelectDisabled: '#7D8C94',
   TextSelect: '#3D3D3D',
   Options: '#677176',
-  TextNext: '#DDF2F8'
+  TextNext: '#DDF2F8',
+  Error: '#F44336'
 };
 
 export const SelectColors = {

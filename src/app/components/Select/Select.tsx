@@ -4,11 +4,11 @@ import * as S from './style';
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
 	disabled: boolean;
-	required: boolean;
+	requiredField: boolean;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
-	const { label = '', disabled = false, required = false, name = '', ...rest } = props;
+	const { label = '', disabled = false, requiredField = false, name = '', ...rest } = props;
 
 	const options = [
 		{
@@ -29,7 +29,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 		<S.Container>
 			<S.ContainerLabel>
 				<S.Label disabled={disabled}>{label}</S.Label>
-				{required && <S.RequiredField>*</S.RequiredField>}
+				{requiredField && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
 			<S.Select name={name} disabled={disabled} {...rest} ref={ref}>
 				{/* <S.Options value="" disabled>
