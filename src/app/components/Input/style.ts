@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { TextColors, SelectColors } from '../../style/theme';
 
 interface Props {
-	disabledField: boolean;
-	hasError: string | undefined;
+	disabled?: boolean;
+	hasError?: string | undefined;
 }
 
 export const Container = styled.div`
@@ -22,7 +22,7 @@ export const Label = styled.label<Props>`
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
-	color: ${(props: Props) => (props.disabledField ? TextColors.TextSelectDisabled : TextColors.TextSelect)};
+	color: ${(props: Props) => (props.disabled ? TextColors.TextSelectDisabled : TextColors.TextSelect)};
 `;
 
 export const RequiredField = styled.span`

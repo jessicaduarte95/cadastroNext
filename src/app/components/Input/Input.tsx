@@ -1,9 +1,9 @@
-import { forwardRef, InputHTMLAttributes, SelectHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import * as S from './style';
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
-	disabled: boolean;
+	disabled?: boolean;
 	requiredField: boolean;
 	hasError?: string;
 };
@@ -14,7 +14,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	return (
 		<S.Container>
 			<S.ContainerLabel>
-				<S.Label disabledField={disabled}>{label}</S.Label>
+				<S.Label disabled={disabled}>{label}</S.Label>
 				{requiredField && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
 			<S.Input hasError={hasError} type={type} name={name} {...rest} ref={ref}></S.Input>
