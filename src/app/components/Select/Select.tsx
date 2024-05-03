@@ -1,29 +1,20 @@
 import { forwardRef, SelectHTMLAttributes } from 'react';
 import * as S from './style';
 
+type Option = {
+	value: number;
+	label: string;
+};
+
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
 	disabled: boolean;
 	requiredField: boolean;
+	options: Option[];
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
-	const { label = '', disabled = false, requiredField = false, name = '', ...rest } = props;
-
-	const options = [
-		{
-			value: '1',
-			label: 'Teste 1'
-		},
-		{
-			value: '2',
-			label: 'Teste 2'
-		},
-		{
-			value: '3',
-			label: 'Teste 3'
-		}
-	];
+	const { label = '', disabled = false, requiredField = false, name = '', options, ...rest } = props;
 
 	return (
 		<S.Container>
@@ -32,10 +23,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) =>
 				{requiredField && <S.RequiredField>*</S.RequiredField>}
 			</S.ContainerLabel>
 			<S.Select name={name} disabled={disabled} {...rest} ref={ref}>
-				{/* <S.Options value="" disabled>
-					Selecione
-				</S.Options> */}
-				{options.map((option, index) => {
+				<S.Options value="">Selecione</S.Options>
+				{options.map((option: Option, index: any) => {
 					return (
 						<S.Options key={index} value={option.value}>
 							{option.label}

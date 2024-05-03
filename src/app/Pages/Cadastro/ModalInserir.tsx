@@ -9,6 +9,7 @@ import { z } from 'zod';
 import { Select } from '../../components/Select/Select';
 import { Input } from '../../components/Input/Input';
 import { CancelButton, NextButton } from '../../components/Button/Button';
+import { options } from '../../../../data';
 
 type ModalInserirProps = {
 	isOpen: boolean;
@@ -99,10 +100,10 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							<S.Alert>Se possível preencha com calma para não ocorrer erros.</S.Alert>
 						</S.Lista>
 					</S.ContainerAlert>
-					<Select {...register('profissional')} label={'Profissional:'} disabled={false} requiredField={true}></Select>
+					<Select {...register('profissional')} label={'Profissional:'} disabled={false} requiredField={true} options={options.profissional}></Select>
 					<S.ContainerFields>
-						<Select {...register('banco')} label={'Banco:'} disabled={false} requiredField={true}></Select>
-						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false} requiredField={true}></Select>
+						<Select {...register('banco')} label={'Banco:'} disabled={false} requiredField={true} options={options.banco}></Select>
+						<Select {...register('tipoConta')} label={'Tipo de conta:'} disabled={false} requiredField={true} options={options.tipoConta}></Select>
 					</S.ContainerFields>
 					<S.ContainerFields>
 						<Input
@@ -129,14 +130,14 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						/>
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false} requiredField={true}></Select>
+						<Select {...register('tipoPessoa')} label={'Tipo de pessoa:'} disabled={false} requiredField={true} options={options.tipoPessoa}></Select>
 						<Input {...register('cpf')} type="text" label={'CPF:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cpf?.message} />
 						<Input {...register('telefone')} type="text" label={'Telefone:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.telefone?.message} />
 					</S.ContainerFields>
 					<Input {...register('nome')} type="text" label={'Nome completo:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.nome?.message} />
 					<S.ContainerFields>
 						<Input {...register('cep')} type="text" label={'CEP:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cep?.message} />
-						<Select {...register('estado')} label={'Estado:'} disabled={false} requiredField={true}></Select>
+						<Select {...register('estado')} label={'Estado:'} disabled={false} requiredField={true} options={options.estado}></Select>
 						<Input {...register('cidade')} type="text" label={'Cidade:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cidade?.message} />
 					</S.ContainerFields>
 					<S.ContainerFields>
