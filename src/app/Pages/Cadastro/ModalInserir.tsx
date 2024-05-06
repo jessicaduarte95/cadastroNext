@@ -136,6 +136,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 						{...register('profissional', {
 							setValueAs: v => parseInt(v)
 						})}
+						data-testid="profissional"
 						label={'Profissional:'}
 						disabled={false}
 						requiredField={true}
@@ -147,6 +148,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							{...register('banco', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="banco"
 							label={'Banco:'}
 							disabled={false}
 							requiredField={true}
@@ -157,6 +159,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							{...register('tipoConta', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="tipoConta"
 							label={'Tipo de conta:'}
 							disabled={false}
 							requiredField={true}
@@ -169,6 +172,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							{...register('agencia', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="agencia"
 							type="number"
 							label={'Agência:'}
 							placeholder="Digite aqui"
@@ -180,6 +184,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							{...register('conta', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="conta"
 							type="number"
 							label={'Conta com dígito:'}
 							placeholder="Digite aqui"
@@ -193,36 +198,39 @@ export const ModalInserir = (props: ModalInserirProps) => {
 							{...register('tipoPessoa', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="tipoPessoa"
 							label={'Tipo de pessoa:'}
 							disabled={false}
 							requiredField={true}
 							options={options.tipoPessoa}
 							hasError={errors.tipoPessoa?.message}
 						/>
-						<Input {...register('cpf')} type="text" label={'CPF:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cpf?.message} />
-						<Input {...register('telefone')} type="text" label={'Telefone:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.telefone?.message} />
+						<Input {...register('cpf')} data-testid="cpf" type="text" label={'CPF:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cpf?.message} />
+						<Input {...register('telefone')} data-testid="telefone" type="text" label={'Telefone:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.telefone?.message} />
 					</S.ContainerFields>
-					<Input {...register('nome')} type="text" label={'Nome completo:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.nome?.message} />
+					<Input {...register('nome')} data-testid="nome" type="text" label={'Nome completo:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.nome?.message} />
 					<S.ContainerFields>
-						<Input {...register('cep')} type="text" label={'CEP:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cep?.message} />
+						<Input {...register('cep')} data-testid="cep" type="text" label={'CEP:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cep?.message} />
 						<Select
 							{...register('estado', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="estado"
 							label={'Estado:'}
 							disabled={false}
 							requiredField={true}
 							options={options.estado}
 							hasError={errors.estado?.message}
 						/>
-						<Input {...register('cidade')} type="text" label={'Cidade:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cidade?.message} />
+						<Input {...register('cidade')} data-testid="cidade" type="text" label={'Cidade:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.cidade?.message} />
 					</S.ContainerFields>
 					<S.ContainerFields>
-						<Input {...register('endereco')} type="text" label={'Endereço:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.endereco?.message} />
+						<Input {...register('endereco')} data-testid="endereco" type="text" label={'Endereço:'} placeholder="Digite aqui" disabled={false} requiredField={true} hasError={errors.endereco?.message} />
 						<Input
 							{...register('numEndereco', {
 								setValueAs: v => parseInt(v)
 							})}
+							data-testid="numEndereco"
 							type="number"
 							label={'Número:'}
 							placeholder="Digite aqui"
