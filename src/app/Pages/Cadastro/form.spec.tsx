@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import { ModalInserir } from './ModalInserir';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
+type DataProps = {
+	nome: string;
+};
 describe('Formulário de cadastro', () => {
 	it('should render correctly', () => {
 		const handleCloseModal = jest.fn();
@@ -48,6 +51,10 @@ describe('Formulário de cadastro', () => {
 
 	it('should type into fields and submit form', async () => {
 		const handleCloseModal = jest.fn();
+		const handleSubmitForm = jest.fn();
+		handleSubmitForm((data: DataProps) => {
+			console.log('Dados: ', data);
+		});
 
 		render(<ModalInserir isOpen={true} handleCloseModal={handleCloseModal} />);
 
@@ -96,5 +103,9 @@ describe('Formulário de cadastro', () => {
 		expect(cidade).toHaveValue(mockCidade);
 		expect(endereco).toHaveValue(mockEndereco);
 		expect(numEndereco).toHaveValue(mockNumEndereco);
+
+		await waitFor(() => {
+			expect(handleSubmitForm).toHaveBeenCalledTimes(1);
+		});
 	});
 });
