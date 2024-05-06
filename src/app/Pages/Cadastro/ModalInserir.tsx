@@ -115,7 +115,7 @@ export const ModalInserir = (props: ModalInserirProps) => {
 				<Title>Ativar o Bank</Title>
 				<CloseButton onClick={handleCloseModal} />
 			</S.ContainerTitle>
-			<form onSubmit={handleSubmit(handleForm)}>
+			<form name="cadastro" onSubmit={handleSubmit(handleForm)}>
 				<S.Container>
 					<SubTitle>Preencha os itens a seguir para configurar o Bank</SubTitle>
 					<S.ContainerAlert>
