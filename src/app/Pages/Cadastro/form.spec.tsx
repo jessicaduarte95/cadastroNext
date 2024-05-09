@@ -68,6 +68,11 @@ describe('Formulário de cadastro', () => {
 		const mockCidade: string = 'Distrito Federal';
 		const mockEndereco: string = 'Teste do endereço';
 		const mockNumEndereco: number = 1;
+		const mockProfissional: string = '1';
+		const mockBanco: string = '1';
+		const mockTipoConta: string = '1';
+		const mockTipoPessoa: string = '1';
+		const mockEstado: string = '1';
 
 		const agencia = screen.getByTestId('agencia');
 		const conta = screen.getByTestId('conta');
@@ -78,6 +83,13 @@ describe('Formulário de cadastro', () => {
 		const cidade = screen.getByTestId('cidade');
 		const endereco = screen.getByTestId('endereco');
 		const numEndereco = screen.getByTestId('numEndereco');
+
+		// Select Fields
+		const profissional = screen.getByTestId('profissional');
+		const banco = screen.getByTestId('banco');
+		const tipoConta = screen.getByTestId('tipoConta');
+		const tipoPessoa = screen.getByTestId('tipoPessoa');
+		const estado = screen.getByTestId('estado');
 
 		const buttonSubmit = screen.getByRole('button', { name: /Concluir/i });
 
@@ -91,6 +103,11 @@ describe('Formulário de cadastro', () => {
 			fireEvent.change(cidade, { target: { value: mockCidade } });
 			fireEvent.change(endereco, { target: { value: mockEndereco } });
 			fireEvent.change(numEndereco, { target: { value: mockNumEndereco } });
+			fireEvent.change(profissional, { target: { value: mockProfissional } });
+			fireEvent.change(banco, { target: { value: mockBanco } });
+			fireEvent.change(tipoConta, { target: { value: mockTipoConta } });
+			fireEvent.change(tipoPessoa, { target: { value: mockTipoPessoa } });
+			fireEvent.change(estado, { target: { value: mockEstado } });
 			fireEvent.click(buttonSubmit);
 		});
 
@@ -103,6 +120,11 @@ describe('Formulário de cadastro', () => {
 		expect(cidade).toHaveValue(mockCidade);
 		expect(endereco).toHaveValue(mockEndereco);
 		expect(numEndereco).toHaveValue(mockNumEndereco);
+		expect(profissional).toHaveValue(mockProfissional);
+		expect(banco).toHaveValue(mockBanco);
+		expect(tipoConta).toHaveValue(mockTipoConta);
+		expect(tipoPessoa).toHaveValue(mockTipoPessoa);
+		expect(estado).toHaveValue(mockEstado);
 
 		await waitFor(() => {
 			expect(handleSubmitForm).toHaveBeenCalledTimes(1);
